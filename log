@@ -93,3 +93,9 @@ list.h:17:18: note: expected ‘List *’ but argument is of type ‘Node *’
 cc1: all warnings being treated as errors
 Compilation failed
 4a1d740
+Thu 16 May 2024 01:19:51 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  4|3
+total_score: 30/70
+ef02df8
