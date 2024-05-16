@@ -61,6 +61,8 @@ List* get_adj_nodes(Node* n) {
                adj_node->sudo[i][j] = k;
                if (is_valid(adj_node)) {
                   pushBack(list, adj_node);
+               } else {
+                  free(adj_node);
                }
             }
             return list;
