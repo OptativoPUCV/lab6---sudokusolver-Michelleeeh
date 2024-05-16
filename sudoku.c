@@ -91,10 +91,15 @@ Node* DFS(Node* initial, int* cont){
       pop(S);
       if (is_final(n)) {
          return n;
-         
       }
+      List* adj = get_adj_nodes(n);
+      Node* adj_node = first(adj);
+      while (adj_node) {
+         push(S, adj_node);
+         adj_node = next(adj);
+      }
+      free(n);
    }
-   
    return NULL;
 }
 
