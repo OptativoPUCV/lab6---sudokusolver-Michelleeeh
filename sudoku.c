@@ -45,8 +45,7 @@ void print_node(Node* n){
 
 int is_valid(Node* n) {
    
-
-    return 1;
+   return 1;
 }
 
 
@@ -85,8 +84,18 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
+   Stack* S = createStack();
+   push(S, initial);
+   while (!is_empty(S)) {
+      Node* n = top(S);
+      pop(S);
+      if (is_final(n)) {
+         return n;
+         
+      }
+   }
    
-  return NULL;
+   return NULL;
 }
 
 
