@@ -52,12 +52,12 @@ int is_valid(Node* n) {
          if (n->sudo[i][j] != 0) {
             for (k = 0; k < 10; k++) {
                aux[k] = 0;
-            }
+            } 
             for (k = 0; k < 9; k++) {
-               if (n->sudo[i][k] != 0) {
+               if (k != j && n->sudo[i][k] != 0) {
                   aux[n->sudo[i][k]]++;
                }
-               if (n->sudo[k][j] != 0) {
+               if (k != i && n->sudo[k][j] != 0) {
                   aux[n->sudo[k][j]]++;
                }
             }
@@ -67,7 +67,6 @@ int is_valid(Node* n) {
          }
       }
    }
-   
    return 1;
 }
 
