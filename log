@@ -59,3 +59,20 @@ Thu 16 May 2024 01:13:58 AM UTC:
  tests:  4|3
 total_score: 30/70
 a32c420
+Thu 16 May 2024 01:16:03 AM UTC: 
+ sudoku.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:99:26: error: passing argument 1 of ‘next’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   99 |          adj_node = next(adj_node);
+      |                          ^~~~~~~~
+      |                          |
+      |                          Node *
+In file included from test.c:4:
+list.h:17:18: note: expected ‘List *’ but argument is of type ‘Node *’
+   17 | void* next(List* list);
+      |            ~~~~~~^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+5d60f0a
