@@ -44,6 +44,29 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n) {
+   int i, j, k;
+   int aux[10];
+   
+   for (i = 0; i < 9; i++) {
+      for (j = 0; j < 9; j++) {
+         if (n->sudo[i][j] != 0) {
+            for (k = 0; k < 10; k++) {
+               aux[k] = 0;
+            }
+            for (k = 0; k < 9; k++) {
+               if (n->sudo[i][k] != 0) {
+                  aux[n->sudo[i][k]]++;
+               }
+               if (n->sudo[k][j] != 0) {
+                  aux[n->sudo[k][j]]++;
+               }
+            }
+            if (aux[n->sudo[i][j]] > 1) {
+               return 0;
+            }
+         }
+      }
+   }
    
    return 1;
 }
@@ -61,8 +84,6 @@ List* get_adj_nodes(Node* n) {
                adj_node->sudo[i][j] = k;
                if (is_valid(adj_node)) {
                   pushBack(list, adj_node);
-               } else {
-                  free(adj_node);
                }
             }
             return list;
