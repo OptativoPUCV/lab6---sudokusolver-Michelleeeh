@@ -90,7 +90,7 @@ Node* DFS(Node* initial, int* cont){
       Node* n = top(S);
       pop(S);
       if (is_final(n)) {
-         return NULL;
+         return n;
       }
       List* adj = get_adj_nodes(n);
       Node* adj_node = first(adj);
@@ -100,7 +100,7 @@ Node* DFS(Node* initial, int* cont){
       }
       free(n);
    }
-   return NULL;
+   return n;
 }
 
 
