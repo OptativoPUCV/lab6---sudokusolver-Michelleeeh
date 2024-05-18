@@ -44,29 +44,45 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n) {
-   int i, j, k;
+   int i, j, k, l;
    int aux[10];
    
+   // Verificación de filas y columnas
    for (i = 0; i < 9; i++) {
+      for (k = 0; k < 10; k++) aux[k] = 0;
       for (j = 0; j < 9; j++) {
-         if (n->sudo[i][j] != 0) {
-            for (k = 0; k < 10; k++) {
-               aux[k] = 0;
-            } 
-            for (k = 0; k < 9; k++) {
-               if (k != j && n->sudo[i][k] != 0) {
-                  aux[n->sudo[i][k]]++;
-               }
-               if (k != i && n->sudo[k][j] != 0) {
-                  aux[n->sudo[k][j]]++;
-               }
+         if (n->sudo[i][j] != 0) aux[n->sudo[i][j]]++;
+      }
+      for (k = 1; k <= 9; k++) {
+         if (aux[k] > 1) return 0;
+      }
+   }
+
+   for (j = 0; j < 9; j++) {
+      for (k = 0; k < 10; k++) aux[k] = 0;
+      for (i = 0; i < 9; i++) {
+         if (n->sudo[i][j] != 0) aux[n->sudo[i][j]]++;
+      }
+      for (k = 1; k <= 9; k++) {
+         if (aux[k] > 1) return 0;
+      }
+   }
+
+   // Verificación de subcuadrantes 3x3
+   for (i = 0; i < 9; i += 3) {
+      for (j = 0; j < 9; j += 3) {
+         for (k = 0; k < 10; k++) aux[k] = 0;
+         for (k = 0; k < 3; k++) {
+            for (l = 0; l < 3; l++) {
+               if (n->sudo[i + k][j + l] != 0) aux[n->sudo[i + k][j + l]]++;
             }
-            if (aux[n->sudo[i][j]] > 1) {
-               return 0;
-            }
+         }
+         for (k = 1; k <= 9; k++) {
+            if (aux[k] > 1) return 0;
          }
       }
    }
+   
    return 1;
 }
 
@@ -126,7 +142,7 @@ Node* DFS(Node* initial, int* cont){
 
 
 
-
+/*
 int main( int argc, char *argv[] ){
 
   Node* initial= read_file("s12a.txt");;
@@ -137,4 +153,4 @@ int main( int argc, char *argv[] ){
   print_node(final);
 
   return 0;
-}
+}*/
